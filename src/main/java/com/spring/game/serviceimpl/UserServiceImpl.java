@@ -17,34 +17,37 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Object userRegister(Users users) {
-	    Users existusername = userRepo.findByUsername(users.getUsername());
-	    Users existmobile = userRepo.findByUsername(users.getMobile());
-	    Users existemail = userRepo.findByUsername(users.getEmail());
-	    if (existusername != null) {
-	        return "Username already exists";
-	    } 
-	    if (existmobile != null) {
-	        return "Mobile number already exists";
-	    } 
-	    if (existemail != null) {
-	        return "Email already exists";
-	    } 
-	    else {
-	        users.setCreatedAt(new Date(System.currentTimeMillis()));
-	        Users user = userRepo.saveAndFlush(users);
-	        return user;
-	    }
+		if (users == null) {
+			return "Invalid user data";
+		}
+
+		Users existUsername = userRepo.findByUsername(users.getUsername());
+		if (existUsername != null) {
+			return "Username already exists";
+		}
+
+		Users existMobile = userRepo.findByMobile(users.getMobile());
+		if (existMobile != null) {
+			return "Mobile number already exists";
+		}
+
+		Users existEmail = userRepo.findByEmail(users.getEmail());
+		if (existEmail != null) {
+			return "Email already exists";
+		}
+
+		users.setCreatedAt(new Date(System.currentTimeMillis()));
+		Users user = userRepo.saveAndFlush(users);
+		return user;
 	}
 
 	@Override
 	public boolean userLogin(Users users) {
-	    Users existingUser = userRepo.findByUsername(users.getUsername());
-	    if (existingUser != null && existingUser.getMobile().equals(users.getMobile())) {
-	        return true;
-	    }
-	    return false;
+		Users existingUser = userRepo.findByUsername(users.getUsername());
+		if (existingUser != null && existingUser.getMobile().equals(users.getMobile())) {
+			return true;
+		}
+		return false;
 	}
-
-
 
 }

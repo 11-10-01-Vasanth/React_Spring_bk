@@ -10,4 +10,8 @@ public interface UserRepo extends JpaRepository<Users, UUID> {
 
 	Users findByUsername(String username);
 
+    Users findByMobile(String mobile);
+
+    Users findByEmail(String email);
+
 }
