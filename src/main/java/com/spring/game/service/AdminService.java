@@ -1,9 +1,13 @@
 package com.spring.game.service;
 
-import com.spring.game.model.Admin;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
+
 
 public interface AdminService {
 
-    Admin addgames(Admin entity);
+    ResponseEntity<String> addgames(String gametitle, String gamedescription, Double gameprice, Double gamediscount, String gamecategory, MultipartFile gameimage);
+
+    ResponseEntity<?> getAllGames(int page, int size);
 
 }

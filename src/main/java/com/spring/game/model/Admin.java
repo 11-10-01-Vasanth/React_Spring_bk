@@ -11,7 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="admin_game")
+@Table(name = "admin_game")
 
 public class Admin {
 
@@ -27,10 +27,10 @@ public class Admin {
 	private String gamedescription;
 
 	@Column(name = "gameprice")
-	private String username;
+	private Double gameprice;
 
 	@Column(name = "gamediscount")
-	private String email;
+	private Double gamediscount;
 
 	@Column(name = "gameimage")
 	private String gameimage;
@@ -68,20 +68,20 @@ public class Admin {
 		this.gamedescription = gamedescription;
 	}
 
-	public String getUsername() {
-		return username;
+	public Double getGameprice() {
+		return gameprice;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setGameprice(Double gameprice) {
+		this.gameprice = gameprice;
 	}
 
-	public String getEmail() {
-		return email;
+	public Double getGamediscount() {
+		return gamediscount;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setGamediscount(Double gamediscount) {
+		this.gamediscount = gamediscount;
 	}
 
 	public String getGameimage() {
